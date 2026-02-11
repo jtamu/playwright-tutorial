@@ -1,0 +1,9 @@
+import { test, expect } from '@playwright/test';
+
+test('フォーム画面へ遷移', async ({ page }) => {
+  await page.goto('http://localhost:3000/');
+  await page.getByRole('link', { name: 'フォーム' }).click();
+
+  await expect(page).toHaveURL('http://localhost:3000/form');
+  await expect(page.getByRole('heading', { name: '入力フォーム' })).toBeVisible();
+});
